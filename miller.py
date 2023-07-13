@@ -47,8 +47,8 @@ def main():
     delta = 0.3
     R0 = 2.5
     
-    flux_surface(A, kappa, delta, R0)
+    R_s, Z_s = flux_surface(A, kappa, delta, R0)
     plot_surface(R_s, Z_s)
 
-if __main__:
+if __name__ == "__main__":
     main()
