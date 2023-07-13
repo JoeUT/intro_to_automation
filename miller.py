@@ -38,13 +38,16 @@ def plot_surface(R_s, Z_s, ax):
     
     if ax is not None:
         ax.plot(R_s, Z_s)
+    else:
+        fig, ax = plt.subplots()
+        ax.plot(R_s, Z_s)
+        ax.axis("equal")
     
-    ax = plt.plot(R_s, Z_s)
-    ax.axis("equal")
-    ax.xlabel("R [m]")
-    ax.ylabel("Z [m]")
-        
-    ax.savefig("./miller.png")
+    plt.xlabel("R [m]")
+    plt.ylabel("Z [m]")     
+    plt.savefig("./miller.png")
+    
+    return ax
 
 def main():
     
@@ -56,7 +59,7 @@ def main():
     ax = None 
     
     R_s, Z_s = flux_surface(A, kappa, delta, R0)
-    plot_surface(R_s, Z_s, ax)
-
+    ax = plot_surface(R_s, Z_s, ax)
+    
 if __name__ == "__main__":
     main()
