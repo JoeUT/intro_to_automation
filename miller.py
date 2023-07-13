@@ -1,4 +1,4 @@
-from numpy import linspace, pi, cos, arcsin, sin
+from numpy import *
 
 A=2.2
 kappa=1.5
