@@ -23,7 +23,7 @@ def flux_surface(A, kappa, delta, R0):
     
     return R_s, Z_s
 
-def plot_surface(R_s, Z_s):
+def plot_surface(R_s, Z_s, ax):
     """Plot flux surface
 
     Arguments
@@ -32,13 +32,19 @@ def plot_surface(R_s, Z_s):
         Major radius coordinates
     Z_s:
         Vertical coordinates
+    ax:
+        Plot axis
     """
     
-    plt.plot(R_s, Z_s)
-    plt.axis("equal")
-    plt.xlabel("R [m]")
-    plt.ylabel("Z [m]")
-    plt.savefig("./miller.png")
+    if ax is not None:
+        ax.plot(R_s, Z_s)
+    
+    ax = plt.plot(R_s, Z_s)
+    ax.axis("equal")
+    ax.xlabel("R [m]")
+    ax.ylabel("Z [m]")
+        
+    ax.savefig("./miller.png")
 
 def main():
     
@@ -47,8 +53,10 @@ def main():
     delta = 0.3
     R0 = 2.5
     
+    ax = None 
+    
     R_s, Z_s = flux_surface(A, kappa, delta, R0)
-    plot_surface(R_s, Z_s)
+    plot_surface(R_s, Z_s, ax)
 
 if __name__ == "__main__":
     main()
